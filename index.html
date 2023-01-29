@@ -202,7 +202,10 @@ label{
         <input type="file" id="myFile" name="filename">
 
     </form> <br>
-
+    <!-- <Label>Enter Height :-</Label>
+    <input type="text"  id="hgt"> <br> <br>
+    <Label>Enter Width :-</Label> 
+    <input type="text"  id="wdt"><br> <br> -->
     <button onclick="CreateClick()" class="button-24" role="button">Print Img</button>
     <button onclick="Print()" class="button-85" role="button">Download</button>
     <br>
@@ -210,7 +213,14 @@ label{
     <div id="imgContainer"></div> <br>
     <button onclick="Note()"class="button-8" role="button">How Its Work ?</button>
     <button onclick="Give()"class="button-8" role="button">Give Feedback</button>
-
+    <!-- <button onclick="Give()"class="button-8" role="button">Note</button> -->
+    
+    <h3>NOTE :-</h3>
+    <ul>
+      <li>You can Download only PDF</li>
+      <li>Soon You can Download in JPG/PNG</li>
+      <li>Height x Width - 120x150 Passport Size Availble only </li>
+    </ul> 
 </body>
 
 <script type="text/javascript">
@@ -222,7 +232,9 @@ label{
 
     function CreateClick() {
         var pic = document.createElement("img");
-        pic.width = "120";
+        pic.width = "120"
+        // pic.height = document.getElementById("hgt").value;
+        // pic.width = document.getElementById("wdt").value;
         pic.height = "150";
         pic.border = "2";
         var reader = new FileReader();
@@ -243,21 +255,26 @@ label{
  function Note(){
   alert("[1] Select Border Color. [2] Upload Your Image. [3] Click On Print Img. [4] How many You want image to print.[5] You Can Select Multiple Images. [6] Click on Download Then You can Download as PDF   ")
  }
+ 
  function Give(){
-  var a=prompt(" Give us Rate out of 10")
-  if(a==""){
-    alert("Enter a Number")
+  var a = prompt("Give us a rating out of 10");
+  if (isNaN(a)){
+    alert("Enter a number");
   }
-  else if(a==null){
-    alert("You Cancelled !")
+  else if (a == null){
+    alert("You cancelled!");
   }
-  else if(a<5){
-    alert("We will Improve Our Service! Thanks For The Feedback")
+  else if (a ==""){
+    alert("Enter a number");
+  }
+  else if (a < 5){
+    alert("We will improve our service. Thanks for the feedback.");
   }
   else{
-    alert("Glad You Like Our Service! Thanks For The Feedback")
+    alert("Glad you like our service. Thanks for the feedback.");
   }
- }
+}
+
 </script>
 
 </html>
