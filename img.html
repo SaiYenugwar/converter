@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+</head>
+<style>
+    body {
+            visibility: visible;
+            background-color: #00ffd5;
+        }
+
+        @media print {
+            body {
+                visibility: hidden;
+            }
+
+            img {
+                visibility: visible;
+                /* border: 2px solid white; */
+                page-break-inside: avoid;
+            }
+        }
+
+        label {
+            display: block;
+        }
+
+        #border-color {
+            margin-bottom: 10px;
+        }
+   
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+
+/* CSS */
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+label{
+    font-weight: bold;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+/* CSS */
+.button-8 {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-8:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+</style>
+
+<body>
+    <h1>Convert Into Passport Size Photo & Download In PDF</h1>
+    <label for="border-color">Select Border Color :-</label>
+    <select id="border-color" name="border-color">
+        <option value="white">White</option>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+    </select>
+
+    <form>
+        <Label>Select Image :-</Label>
+        <input type="file" id="myFile" name="filename">
+
+    </form> <br>
+
+    <button onclick="CreateClick()" class="button-24" role="button">Create Img</button>
+    <button onclick="Print()" class="button-85" role="button">Print</button>
+    <br>
+    <br>
+    <div id="imgContainer"></div> <br>
+    <button onclick="Note()"class="button-8" role="button">How Its Work ?</button>
+    <button onclick="Give()"class="button-8" role="button">Give Feedback</button>
+
+</body>
+
+<script type="text/javascript">
+
+    var selectedFile;
+    document.getElementById("myFile").addEventListener("change", function (event) {
+        selectedFile = event.target.files[0];
+    });
+
+    function CreateClick() {
+        var pic = document.createElement("img");
+        pic.width = "120";
+        pic.height = "150";
+        pic.border = "2";
+        var reader = new FileReader();
+        reader.onload = function () {
+            pic.src = reader.result;
+        }
+        reader.readAsDataURL(selectedFile);
+        document.getElementById("imgContainer").appendChild(pic);
+        var borderColor = document.getElementById("border-color").value;
+        pic.style.border = "2px solid " + borderColor;
+
+    }
+
+    function Print() {
+        window.print();
+    }
+ 
+ function Note(){
+  alert("[1] Select Border Color. [2] Upload Your Image. [3] Click On Create image. [4] How many You want image to print. ")
+ }
+ function Give(){
+  var a=prompt(" Give us Rate out of 10")
+  if(a==""){
+    alert("Enter a Number")
+  }
+  else if(a==null){
+    alert("You Cancelled !")
+  }
+  else if(a<5){
+    alert("We will Improve Our Service! Thanks For The Feedback")
+  }
+  else{
+    alert("Glad You Like Our Service! Thanks For The Feedback")
+  }
+ }
+</script>
+
+</html>
